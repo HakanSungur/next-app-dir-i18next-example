@@ -13,17 +13,30 @@
     "syncLocales": "locize sync --project-id=01b2e5e8-6243-47d1-b36f-963dbb8bcae3 --api-key=bd8cb856-d6b3-4c82-a456-862c729a1674 --ver=latest --path=./app/i18n/locales --dry=true"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.6.2",
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.1.5",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.15",
     "accept-language": "3.0.18",
+    "axios": "^1.7.7",
     "i18next": "23.11.5",
     "i18next-browser-languagedetector": "8.0.0",
     "i18next-resources-to-backend": "1.2.1",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-cookie": "7.1.4",
+    "react-datepicker": "^7.5.0",
+    "react-dates": "^21.8.0",
     "react-dom": "18.3.1",
-    "react-i18next": "14.1.2"
+    "react-i18next": "14.1.2",
+    "react-secure-storage": "^1.3.2",
+    "sass": "^1.80.5"
   },
   "devDependencies": {
-    "locize-cli": "8.0.1"
+    "locize-cli": "8.0.1",
+    "tailwindcss": "^3.4.1"
   }
 }
