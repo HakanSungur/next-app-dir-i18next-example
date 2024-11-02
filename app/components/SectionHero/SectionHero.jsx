@@ -1,3 +1,4 @@
+
 import HeroSearchForm from "../HeroSearchForm/HeroSearchForm";
 import { useTranslation } from "../../i18n/index";
 
@@ -17,8 +18,11 @@ const SectionHero = async({ className = "", lng }) => {
           <span className="text-base md:text-lg text-neutral-500 dark:text-neutral-400">
             {t("sectionHero2")}
           </span>
+
+    
         </div>
         <div className="flex-grow">
+
         </div>
       </div>
 

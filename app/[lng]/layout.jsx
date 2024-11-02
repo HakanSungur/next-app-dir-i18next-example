@@ -4,11 +4,6 @@ import { dir } from 'i18next'
 import { languages, fallbackLng } from '../i18n/settings'
 import { useTranslation } from '../i18n'
 
-import './global.css'
-import '../styles/index.scss'
-import 'react-dates/lib/initialize.js';
-import "react-dates/lib/css/_datepicker.css";
-
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
 }

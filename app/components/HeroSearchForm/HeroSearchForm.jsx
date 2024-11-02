@@ -1,12 +1,8 @@
 "use client"
-import React,{ useState} from "react";
+import React,{ useLayoutEffect, useState} from "react";
 import StaySearchForm from "./StaySearchForm";
-import ExperiencesSearchForm from "./(experiences-search-form)/ExperiencesSearchForm";
-import RentalCarSearchForm from "./(car-search-form)/RentalCarSearchForm";
-import FlightSearchForm from "./(flight-search-form)/FlightSearchForm";
-import BussesSearchForm from "./(bus-search-form)/BusSearchForm";
 import { useTranslation } from "../../i18n/client";
-
+import moment from "moment";
 
 const HeroSearchForm = ({
   className = "",
@@ -18,9 +14,28 @@ const HeroSearchForm = ({
   setIsBusBidDataChanged,
   lng
 }) => {
-  const {t}=useTranslation(lng);
-  console.log(lng);
-
+  const {t}=useTranslation();
+console.log(lng)
+  useLayoutEffect(() => {
+    const loadLocale = async () => {
+      try {
+        // Dil kodunu basit hale getir (örn. 'en-US' => 'en')
+        const locale = lng.split('-')[0];
+        // Dinamik olarak locale dosyasını yükle
+        await import(`moment/locale/${locale}`);
+        
+        // Moment'in locale'ini ayarla
+        moment.locale(locale);
+      } catch (error) {
+        
+        // Hata olursa varsayılan dil İngilizce olsun
+        moment.locale('en');
+      }
+    };
+  
+    // Locale'i yüklemek için async fonksiyonu çağır
+    loadLocale();
+  }, []);
   const tabs = [
     {
       id: "Stays",
@@ -78,27 +93,8 @@ const HeroSearchForm = ({
     
     switch (tabActive) {
       case "Stays":
-        return <StaySearchForm haveDefaultValue={isArchivePage} lng={lng} />
-      case "Experiences":
-        return <ExperiencesSearchForm haveDefaultValue={isArchivePage} />;
-      case "Cars":
-        return <RentalCarSearchForm haveDefaultValue={isArchivePage} />;
-      case "Flights":
-        return (
-          <FlightSearchForm
-            haveDefaultValue={isArchivePage}
-            isBidDataChanged={isBidDataChanged}
-            setIsBidDataChanged={setIsBidDataChanged}
-          />
-        );
-      case "Busses & Transfers":
-        return (
-          <BussesSearchForm
-            haveDefaultValue={isArchivePage}
-            isBusBidDataChanged={isBusBidDataChanged}
-            setIsBusBidDataChanged={setIsBusBidDataChanged}
-          />
-        );
+        return <StaySearchForm haveDefaultValue={isArchivePage} lng={lng}  />;
+     
 
       default:
         return null;
